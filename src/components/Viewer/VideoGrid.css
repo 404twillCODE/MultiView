@@ -1,0 +1,90 @@
+.grid {
+  display: grid;
+  gap: 14px;
+  padding: 16px clamp(12px, 2vw, 24px) 32px;
+  align-content: start;
+}
+
+/* ------------------------------------------------------------ Auto layout -- */
+
+/* `min(100%, …)` keeps the tracks from overflowing narrow viewports. */
+.grid--layout-auto {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+}
+
+/* One video: a single large, centred player instead of a stretched one. */
+.grid--layout-auto[data-count='1'] {
+  max-width: min(1180px, 100%);
+  margin-inline: auto;
+}
+
+/* Three videos read better as 2 + 1 than as three slivers on mid-size screens. */
+@media (min-width: 1500px) {
+  .grid--layout-auto[data-count='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1700px) {
+  .grid--layout-auto {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+  }
+}
+
+/* -------------------------------------------------------- Fixed layouts --- */
+
+.grid--layout-1 {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: min(1180px, 100%);
+  margin-inline: auto;
+}
+
+.grid--layout-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid--layout-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid--layout-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* --------------------------------------------------------- Focus mode ----- */
+
+.grid--focus {
+  grid-template-columns: repeat(auto-fit, minmax(min(50%, 210px), 1fr));
+  max-width: 100%;
+}
+
+/* ----------------------------------------------------------- Responsive --- */
+
+/* Never let a chosen column count squeeze players below a usable size. */
+@media (max-width: 1280px) {
+  .grid--layout-4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid--layout-3,
+  .grid--layout-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    gap: 10px;
+    padding: 12px 10px 28px;
+  }
+
+  .grid--layout-2,
+  .grid--layout-3,
+  .grid--layout-4,
+  .grid--layout-auto,
+  .grid--focus {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

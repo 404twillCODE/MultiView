@@ -1,0 +1,64 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.logo__mark {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+.logo__mark > span {
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+
+.logo__mark > span:nth-child(1),
+.logo__mark > span:nth-child(4) {
+  opacity: 1;
+}
+
+.logo:hover .logo__mark > span {
+  opacity: 1;
+}
+
+.logo__word {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.logo--lg .logo__mark {
+  width: 34px;
+  height: 34px;
+  gap: 3px;
+}
+
+.logo--lg .logo__mark > span {
+  border-radius: 5px;
+}
+
+.logo--lg .logo__word {
+  font-size: 40px;
+  font-weight: 680;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 560px) {
+  .logo--lg .logo__word {
+    font-size: 32px;
+  }
+
+  .logo--lg .logo__mark {
+    width: 28px;
+    height: 28px;
+  }
+}

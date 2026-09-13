@@ -1,0 +1,31 @@
+.add-videos__hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-subtle);
+  font-size: 12.5px;
+}
+
+.add-videos__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.add-videos__invalid {
+  margin-top: 12px;
+}
+
+@media (max-width: 560px) {
+  .add-videos__hint {
+    display: none;
+  }
+
+  .add-videos__buttons {
+    flex: 1 1 auto;
+  }
+
+  .add-videos__buttons .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
