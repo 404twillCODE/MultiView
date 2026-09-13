@@ -39,7 +39,7 @@ No backend, no database, no API keys. Everything runs in the browser and your se
 
 ## Quick start
 
-Requires [Node.js](https://nodejs.org/) 20.19+ (or 22+) and npm.
+Requires [Node.js](https://nodejs.org/) 22+ and npm.
 
 ```bash
 npm install     # install dependencies
