@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["node"],
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -14,14 +15,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo"
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@shared/*": ["./src/shared/*"]
+    },
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.web.tsbuildinfo"
   },
-  "include": [
-    "electron.vite.config.ts",
-    "src/main/**/*",
-    "src/preload/**/*",
-    "src/shared/**/*"
-  ]
+  "include": ["src/renderer/**/*", "src/shared/**/*"]
 }

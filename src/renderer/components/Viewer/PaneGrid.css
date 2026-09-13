@@ -1,0 +1,112 @@
+.pgrid {
+  display: grid;
+  gap: 12px;
+  padding: 14px clamp(12px, 2vw, 20px) 24px;
+  align-content: stretch;
+  /* Fill the viewport below the toolbar so pane content areas have real height
+     for the native WebContentsViews to cover. */
+  min-height: calc(100vh - var(--toolbar-height) - 8px);
+  grid-auto-rows: minmax(220px, 1fr);
+}
+
+.pgrid--layout-auto {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+}
+
+.pgrid--layout-auto[data-count='1'] {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: min(1400px, 100%);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.pgrid--layout-auto[data-count='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pgrid--layout-auto[data-count='3'] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pgrid--layout-auto[data-count='4'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 1400px) {
+  .pgrid--layout-auto[data-count='4'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pgrid--layout-auto[data-count='5'],
+  .pgrid--layout-auto[data-count='6'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.pgrid--layout-1 {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: min(1400px, 100%);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.pgrid--layout-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pgrid--layout-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pgrid--layout-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pgrid--layout-2x2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.pgrid--layout-3x2 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.pgrid--layout-3x3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.pgrid--focus {
+  grid-template-columns: repeat(auto-fit, minmax(min(50%, 200px), 1fr));
+  grid-auto-rows: minmax(140px, auto);
+}
+
+.pgrid--focus .pane--focused {
+  min-height: min(72vh, 820px);
+}
+
+@media (max-width: 1280px) {
+  .pgrid--layout-4,
+  .pgrid--layout-3x3,
+  .pgrid--layout-3x2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .pgrid--layout-2,
+  .pgrid--layout-3,
+  .pgrid--layout-4,
+  .pgrid--layout-2x2,
+  .pgrid--layout-3x2,
+  .pgrid--layout-3x3,
+  .pgrid--layout-auto,
+  .pgrid--focus {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pgrid {
+    grid-auto-rows: minmax(280px, 1fr);
+  }
+}

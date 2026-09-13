@@ -1,9 +1,15 @@
 # Dependencies
 node_modules/
 
-# Build output
+# Build / package output
+out/
 dist/
 dist-ssr/
+release/
+*.dmg
+*.exe
+*.AppImage
+*.blockmap
 
 # Local env files
 .env
@@ -23,3 +29,6 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .idea/
 *.swp
+
+# Electron
+.electron-vite/

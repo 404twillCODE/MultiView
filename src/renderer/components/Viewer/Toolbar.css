@@ -1,0 +1,103 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: var(--toolbar-height);
+  padding: 10px clamp(12px, 2vw, 24px);
+  padding-left: max(clamp(12px, 2vw, 24px), env(safe-area-inset-left));
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 82%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  /* Let the user drag the frameless window from the toolbar (macOS). */
+  -webkit-app-region: drag;
+}
+
+.toolbar button,
+.toolbar a,
+.toolbar .menu,
+.toolbar input {
+  -webkit-app-region: no-drag;
+}
+
+.toolbar__solo {
+  -webkit-app-region: no-drag;
+}
+
+.toolbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.toolbar__home {
+  display: inline-flex;
+  padding: 4px;
+  margin: -4px;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.toolbar__home:hover {
+  text-decoration: none;
+}
+
+.toolbar__count {
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+/* Current value shown next to the "Layout" trigger. */
+.toolbar__value {
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-active);
+  color: var(--text-muted);
+  font-size: 11.5px;
+}
+
+@media (max-width: 620px) {
+  .toolbar {
+    padding: 8px 10px;
+  }
+
+  .toolbar__label {
+    display: none;
+  }
+
+  .toolbar__actions .btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .toolbar__actions .btn--primary {
+    width: auto;
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .toolbar__count {
+    display: none;
+  }
+}
